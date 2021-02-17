@@ -1,0 +1,41 @@
+# Repo: FirelyTeam/Vonk.IdentityServer.Test
+# File: build/azure-pipelines.yml
+name: $(SourceBranchName)-$(Date:yyyyMMdd)$(Rev:-r)
+
+resources:
+  repositories:
+    - repository: templates
+      type: github
+      name: FirelyTeam/azure-pipeline-templates
+      endpoint: FirelyTeam 
+
+variables:
+  buildConfiguration: 'Release'
+  azureSubscription: vonk-identityserver
+
+stages:
+- stage: build
+  jobs:
+  - job: publish
+    pool:
+      name: 'Private pool'    
+    steps:
+    - task: UseDotNet@2
+      displayName: 'Use .NET Core sdk 3.1.x'
+      inputs:
+        packageType: sdk
+        version: 3.1.x
+    - task: DotNetCoreCLI@2
+      displayName: 'Publish '
+      inputs:
+        command: publish
+        publishWebProjects: true
+        projects: |
+         **\*.csproj
+         !**\*Tests.csproj
+        arguments: '-o $(Build.ArtifactStagingDirectory)/published -c $(buildConfiguration)'
+    - task: PublishBuildArtifacts@1
+      name: PublishedWebSite
+      displayName: 'Publish Artifact: PublishedWebSite'
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/published'
