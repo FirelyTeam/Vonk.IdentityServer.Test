@@ -11,7 +11,6 @@ resources:
 
 variables:
   buildConfiguration: 'Release'
-  azureSubscription: vonk-identityserver
 
 stages:
 - stage: build
