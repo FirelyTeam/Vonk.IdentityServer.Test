@@ -36,8 +36,8 @@ namespace Vonk.IdentityServer
             return new List<ApiResource>
             {
                 new ApiResource{
-                    Name = "vonk",
-                    DisplayName = "Vonk FHIR Server",
+                    Name = "firelyserver",
+                    DisplayName = "Firely Server",
                     Scopes = GetApiScopes().Select(scope => scope.Name).ToList()
                 }
             };
