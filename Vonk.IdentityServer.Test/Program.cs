@@ -36,7 +36,7 @@ namespace Vonk.IdentityServer
                             options.Listen(IPAddress.Loopback, 5100);
                             options.Listen(IPAddress.Loopback, 5101, listenOptions =>
                             {
-                                listenOptions.UseHttps("ssl_cert.pfx", "test");
+                                listenOptions.UseHttps("ssl_cert.pfx", "cert-password");
                             });
                         }
 #endif
