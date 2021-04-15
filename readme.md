@@ -14,7 +14,7 @@ For instructions on how to use this and the access control features to use it fo
 ## Dependencies
 
 - Microsoft .NET Core 3.1
-- Microsoft Windows
+- Microsoft Windows (to run Powershell script to generate SSL certs)
 - Microsoft Visual Studio
 - [.NET FHIR API](https://github.com/FirelyTeam/firely-net-sdk)
 
